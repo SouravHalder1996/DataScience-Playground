@@ -159,6 +159,8 @@ a:has(.card) {
 .badge-regression     { background: #2e2010; color: #f0a050; border: 1px solid #3d2a10; }
 .badge-optimization   { background: #2a1a2e; color: #c47aff; border: 1px solid #3d1e45; }
 .badge-dim-reduction  { background: #10202e; color: #50b0f0; border: 1px solid #103040; }
+.badge-tree           { background: #1a2e1a; color: #7aff72; border: 1px solid #2e551e; }
+.badge-ensemble       { background: #2a1a2e; color: #c47aff; border: 1px solid #3d1e45; }
 
 .card-name {
     font-size: 1.05rem;
@@ -225,8 +227,8 @@ st.markdown("""
         decision boundaries shift, and build intuition through real-time feedback.
     </p>
     <div class="hero-stats">
-        <div class="stat"><div class="stat-num">12</div><div class="stat-label">Algorithms</div></div>
-        <div class="stat"><div class="stat-num">5</div><div class="stat-label">Categories</div></div>
+        <div class="stat"><div class="stat-num">20</div><div class="stat-label">Algorithms</div></div>
+        <div class="stat"><div class="stat-num">7</div><div class="stat-label">Categories</div></div>
         <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Experiments</div></div>
     </div>
 </div>
@@ -238,21 +240,9 @@ ALGORITHMS = {
     "Classification": [
         dict(
             icon="🔵", name="Logistic Regression",
-            desc="Linear decision boundary with probabilistic output. Great for understanding odds ratios and regularisation.",
+            desc="Linear decision boundary with probabilistic output. Covers binary and multi-class (Softmax) via solver selection.",
             difficulty=1, status="live", page="pages/1_Logistic_Regression.py",
             accent="#6c63ff", badge="badge-classification",
-        ),
-        dict(
-            icon="🌳", name="Decision Tree",
-            desc="Recursive binary splits on features. Visualise the full tree and watch it over-fit in real time.",
-            difficulty=1, status="live", page="pages/2_Decision_Tree.py",
-            accent="#7a72ff", badge="badge-classification",
-        ),
-        dict(
-            icon="🌲", name="Random Forest",
-            desc="Bagged ensemble of decision trees. Explore feature importance and OOB error as n_estimators grows.",
-            difficulty=2, status="live", page="pages/3_Random_Forest.py",
-            accent="#c47aff", badge="badge-classification",
         ),
         dict(
             icon="⚡", name="Support Vector Machine",
@@ -273,24 +263,10 @@ ALGORITHMS = {
             accent="#6c63ff", badge="badge-classification",
         ),
     ],
-    "Clustering": [
-        dict(
-            icon="⭕", name="K-Means",
-            desc="Partition data into k Voronoi cells. Animate centroid convergence and evaluate with silhouette scores.",
-            difficulty=1, status="live", page="pages/4_KMeans.py",
-            accent="#52c4a0", badge="badge-clustering",
-        ),
-        dict(
-            icon="🫧", name="DBSCAN",
-            desc="Density-based clusters of arbitrary shape. Tune eps & min_samples to control what counts as noise.",
-            difficulty=2, status="soon", page=None,
-            accent="#52c4a0", badge="badge-clustering",
-        ),
-    ],
     "Regression": [
         dict(
             icon="📈", name="Linear Regression",
-            desc="OLS, Ridge, and Lasso in one page. See how regularisation shrinks coefficients toward zero.",
+            desc="Simple & Multiple OLS regression in one page. Add features and watch the fit evolve in real time.",
             difficulty=1, status="soon", page=None,
             accent="#f0a050", badge="badge-regression",
         ),
@@ -299,6 +275,78 @@ ALGORITHMS = {
             desc="Raise the degree and watch the model interpolate then wildly extrapolate.",
             difficulty=1, status="soon", page=None,
             accent="#f0a050", badge="badge-regression",
+        ),
+        dict(
+            icon="🔗", name="Regularized Regression",
+            desc="Ridge, Lasso & ElasticNet in one page. See how L1/L2 penalties shrink and zero out coefficients.",
+            difficulty=2, status="soon", page=None,
+            accent="#f0a050", badge="badge-regression",
+        ),
+    ],
+    "Tree Methods": [
+        dict(
+            icon="🌳", name="Decision Tree",
+            desc="Recursive binary splits on features. Visualise the full tree and watch it over-fit in real time.",
+            difficulty=1, status="live", page="pages/2_Decision_Tree.py",
+            accent="#7a72ff", badge="badge-tree",
+        ),
+        dict(
+            icon="🌲", name="Random Forest",
+            desc="Bagged ensemble of decision trees. Explore feature importance and OOB error as n_estimators grows.",
+            difficulty=2, status="live", page="pages/3_Random_Forest.py",
+            accent="#c47aff", badge="badge-tree",
+        ),
+    ],
+    "Ensemble & Boosting": [
+        dict(
+            icon="🗳️", name="Voting Ensemble",
+            desc="Combine weak classifiers by hard or soft voting. Watch how diversity between models improves accuracy.",
+            difficulty=2, status="soon", page=None,
+            accent="#c47aff", badge="badge-ensemble",
+        ),
+        dict(
+            icon="🔋", name="AdaBoost",
+            desc="Sequentially focuses on misclassified samples. Tune n_estimators and learning rate to control boosting.",
+            difficulty=2, status="soon", page=None,
+            accent="#c47aff", badge="badge-ensemble",
+        ),
+        dict(
+            icon="🚀", name="Gradient Boosting",
+            desc="Additive model trained on residuals. Control depth, shrinkage, and subsample to fight overfitting.",
+            difficulty=3, status="soon", page=None,
+            accent="#c47aff", badge="badge-ensemble",
+        ),
+        dict(
+            icon="⚙️", name="XGBoost",
+            desc="Regularized gradient boosting with column subsampling. Industry-standard for tabular data competitions.",
+            difficulty=3, status="soon", page=None,
+            accent="#c47aff", badge="badge-ensemble",
+        ),
+        dict(
+            icon="🧱", name="Stacking & Blending",
+            desc="Use model predictions as features for a meta-learner. See how base models and the blender interact.",
+            difficulty=3, status="soon", page=None,
+            accent="#c47aff", badge="badge-ensemble",
+        ),
+    ],
+    "Clustering": [
+        dict(
+            icon="⭕", name="K-Means",
+            desc="Partition data into k Voronoi cells. Animate centroid convergence and evaluate with silhouette scores.",
+            difficulty=1, status="live", page="pages/4_KMeans.py",
+            accent="#52c4a0", badge="badge-clustering",
+        ),
+        dict(
+            icon="🌿", name="Hierarchical Clustering",
+            desc="Build a dendrogram bottom-up or top-down. Choose the linkage and cut height to form clusters.",
+            difficulty=2, status="soon", page=None,
+            accent="#52c4a0", badge="badge-clustering",
+        ),
+        dict(
+            icon="🫧", name="DBSCAN",
+            desc="Density-based clusters of arbitrary shape. Tune eps & min_samples to control what counts as noise.",
+            difficulty=2, status="soon", page=None,
+            accent="#52c4a0", badge="badge-clustering",
         ),
     ],
     "Optimization": [

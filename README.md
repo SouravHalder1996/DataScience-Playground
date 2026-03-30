@@ -1,4 +1,4 @@
-# 🧠 ML Playground
+# 🧠 Data Science Playground
 
 An interactive Streamlit app for exploring Machine Learning algorithms hands-on.
 Tune hyperparameters and watch decision boundaries, metrics, and visualisations
