@@ -239,9 +239,9 @@ with tab3:
         **PLOTLY_LAYOUT,
         title="Silhouette Plot (per sample)",
         xaxis_title="Silhouette Coefficient",
-        yaxis=dict(visible=False, **PLOTLY_LAYOUT["yaxis"]),
         barmode="overlay",
     )
+    fig_sil.update_yaxes(visible=False)
     st.plotly_chart(fig_sil, use_container_width=True)
 
 # ── Tab 4 : Cluster stats ──────────────────────────────────────────────────────

@@ -154,13 +154,13 @@ a:has(.card) {
     font-weight: 600;
     text-transform: uppercase;
 }
-.badge-classification { background: #1a1a3a; color: #7a72ff; border: 1px solid #2e2e55; }
-.badge-clustering     { background: #1a2e2a; color: #52c4a0; border: 1px solid #1e3d35; }
+.badge-classification { background: #1a1a3a; color: #6c63ff; border: 1px solid #2e2e55; }
 .badge-regression     { background: #2e2010; color: #f0a050; border: 1px solid #3d2a10; }
-.badge-optimization   { background: #2a1a2e; color: #c47aff; border: 1px solid #3d1e45; }
+.badge-tree           { background: #0f2a1a; color: #4dca7a; border: 1px solid #1a4a2a; }
+.badge-ensemble       { background: #2e1020; color: #f06090; border: 1px solid #4a1530; }
+.badge-clustering     { background: #0f2a2a; color: #38c4b0; border: 1px solid #1a4040; }
+.badge-optimization   { background: #2a2500; color: #e0c030; border: 1px solid #3d3500; }
 .badge-dim-reduction  { background: #10202e; color: #50b0f0; border: 1px solid #103040; }
-.badge-tree           { background: #1a2e1a; color: #7aff72; border: 1px solid #2e551e; }
-.badge-ensemble       { background: #2a1a2e; color: #c47aff; border: 1px solid #3d1e45; }
 
 .card-name {
     font-size: 1.05rem;
@@ -248,13 +248,13 @@ ALGORITHMS = {
             icon="⚡", name="Support Vector Machine",
             desc="Maximum-margin hyperplane with kernel tricks. Switch kernels and C to reshape the decision surface.",
             difficulty=2, status="soon", page=None,
-            accent="#f070a0", badge="badge-classification",
+            accent="#6c63ff", badge="badge-classification",
         ),
         dict(
             icon="🧮", name="Naive Bayes",
             desc="Probabilistic classifier assuming feature independence. Fast, interpretable, and surprisingly robust.",
             difficulty=1, status="soon", page=None,
-            accent="#70b0f0", badge="badge-classification",
+            accent="#6c63ff", badge="badge-classification",
         ),
         dict(
             icon="🏘️", name="K-Nearest Neighbours",
@@ -288,13 +288,13 @@ ALGORITHMS = {
             icon="🌳", name="Decision Tree",
             desc="Recursive binary splits on features. Visualise the full tree and watch it over-fit in real time.",
             difficulty=1, status="live", page="pages/2_Decision_Tree.py",
-            accent="#7a72ff", badge="badge-tree",
+            accent="#4dca7a", badge="badge-tree",
         ),
         dict(
             icon="🌲", name="Random Forest",
             desc="Bagged ensemble of decision trees. Explore feature importance and OOB error as n_estimators grows.",
             difficulty=2, status="live", page="pages/3_Random_Forest.py",
-            accent="#c47aff", badge="badge-tree",
+            accent="#4dca7a", badge="badge-tree",
         ),
     ],
     "Ensemble & Boosting": [
@@ -302,31 +302,31 @@ ALGORITHMS = {
             icon="🗳️", name="Voting Ensemble",
             desc="Combine weak classifiers by hard or soft voting. Watch how diversity between models improves accuracy.",
             difficulty=2, status="soon", page=None,
-            accent="#c47aff", badge="badge-ensemble",
+            accent="#f06090", badge="badge-ensemble",
         ),
         dict(
             icon="🔋", name="AdaBoost",
             desc="Sequentially focuses on misclassified samples. Tune n_estimators and learning rate to control boosting.",
             difficulty=2, status="soon", page=None,
-            accent="#c47aff", badge="badge-ensemble",
+            accent="#f06090", badge="badge-ensemble",
         ),
         dict(
             icon="🚀", name="Gradient Boosting",
             desc="Additive model trained on residuals. Control depth, shrinkage, and subsample to fight overfitting.",
             difficulty=3, status="soon", page=None,
-            accent="#c47aff", badge="badge-ensemble",
+            accent="#f06090", badge="badge-ensemble",
         ),
         dict(
             icon="⚙️", name="XGBoost",
             desc="Regularized gradient boosting with column subsampling. Industry-standard for tabular data competitions.",
             difficulty=3, status="soon", page=None,
-            accent="#c47aff", badge="badge-ensemble",
+            accent="#f06090", badge="badge-ensemble",
         ),
         dict(
             icon="🧱", name="Stacking & Blending",
             desc="Use model predictions as features for a meta-learner. See how base models and the blender interact.",
             difficulty=3, status="soon", page=None,
-            accent="#c47aff", badge="badge-ensemble",
+            accent="#f06090", badge="badge-ensemble",
         ),
     ],
     "Clustering": [
@@ -334,19 +334,19 @@ ALGORITHMS = {
             icon="⭕", name="K-Means",
             desc="Partition data into k Voronoi cells. Animate centroid convergence and evaluate with silhouette scores.",
             difficulty=1, status="live", page="pages/4_KMeans.py",
-            accent="#52c4a0", badge="badge-clustering",
+            accent="#38c4b0", badge="badge-clustering",
         ),
         dict(
             icon="🌿", name="Hierarchical Clustering",
             desc="Build a dendrogram bottom-up or top-down. Choose the linkage and cut height to form clusters.",
             difficulty=2, status="soon", page=None,
-            accent="#52c4a0", badge="badge-clustering",
+            accent="#38c4b0", badge="badge-clustering",
         ),
         dict(
             icon="🫧", name="DBSCAN",
             desc="Density-based clusters of arbitrary shape. Tune eps & min_samples to control what counts as noise.",
             difficulty=2, status="soon", page=None,
-            accent="#52c4a0", badge="badge-clustering",
+            accent="#38c4b0", badge="badge-clustering",
         ),
     ],
     "Optimization": [
@@ -354,7 +354,7 @@ ALGORITHMS = {
             icon="📉", name="Gradient Descent",
             desc="Batch, Stochastic & Mini-Batch side by side. Watch every step descend the loss surface in real time.",
             difficulty=2, status="live", page="pages/5_Gradient_Descent.py",
-            accent="#52c4a0", badge="badge-optimization",
+            accent="#e0c030", badge="badge-optimization",
         ),
     ],
     "Dimensionality Reduction": [

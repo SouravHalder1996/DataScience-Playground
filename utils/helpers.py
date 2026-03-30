@@ -248,8 +248,8 @@ def fig_confusion_matrix(y_true, y_pred, class_names: list[str]) -> go.Figure:
         title="Confusion Matrix",
         xaxis_title="Predicted",
         yaxis_title="Actual",
-        yaxis=dict(autorange="reversed", **PLOTLY_LAYOUT["yaxis"]),
     )
+    fig.update_yaxes(autorange="reversed")
     return fig
 
 
@@ -426,7 +426,7 @@ def metric_row(metrics: dict):
     import streamlit as st
     cols = st.columns(len(metrics))
     for col, (name, val) in zip(cols, metrics.items()):
-        col.metric(name, f"{val:.4f}")
+        col.metric(name, f"{val:.4f}" if isinstance(val, float) else str(val))
 
 def sidebar_header():
     import streamlit as st

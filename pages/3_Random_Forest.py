@@ -71,21 +71,14 @@ feature_names   = data["feature_names"]
 
 mf = None if max_features == "None (all)" else (0.5 if max_features == "0.5" else max_features)
 
-@st.cache_data(show_spinner="🌲 Growing forest …")
-def fit_rf(n_est, crit, depth, mf, mss, msl, boot, oob, rstate,
-           _X_train, _y_train):
-    return RandomForestClassifier(
-        n_estimators=n_est, criterion=crit, max_depth=depth,
-        max_features=mf, min_samples_split=mss, min_samples_leaf=msl,
-        bootstrap=boot, oob_score=oob, random_state=rstate, n_jobs=-1,
-    ).fit(_X_train, _y_train)
-
-model = fit_rf(
-    n_estimators, criterion, max_depth, mf,
-    min_samples_split, min_samples_leaf,
-    bootstrap, oob_score, rand_state,
-    X_train, y_train,
-)
+with st.spinner("🌲 Growing forest …"):
+    model = RandomForestClassifier(
+        n_estimators=n_estimators, criterion=criterion, max_depth=max_depth,
+        max_features=mf, min_samples_split=min_samples_split,
+        min_samples_leaf=min_samples_leaf,
+        bootstrap=bootstrap, oob_score=oob_score,
+        random_state=rand_state, n_jobs=-1,
+    ).fit(X_train, y_train)
 y_pred = model.predict(X_test)
 
 # ── Metrics ────────────────────────────────────────────────────────────────────
@@ -159,17 +152,9 @@ with tab5:
                 ns_range.append(n_estimators)
 
             @st.cache_data(show_spinner=False)
-            def oob_curve(_X_train, _y_train, max_n, crit, depth, mf_, mss, msl, rstate):
-                oob_errors = []
-                estimator = RandomForestClassifier(
-                    n_estimators=max_n, criterion=crit, max_depth=depth,
-                    max_features=mf_, min_samples_split=mss, min_samples_leaf=msl,
-                    bootstrap=True, oob_score=True, warm_start=False,
-                    random_state=rstate, n_jobs=-1,
-                )
-                # Build incrementally
+            def oob_curve(_X_train, _y_train, max_n, crit, depth, mf_, mss, msl, rstate, _ns_range):
                 results = {}
-                for n in ns_range:
+                for n in _ns_range:
                     m = RandomForestClassifier(
                         n_estimators=n, criterion=crit, max_depth=depth,
                         max_features=mf_, min_samples_split=mss, min_samples_leaf=msl,
@@ -182,6 +167,7 @@ with tab5:
                 X_train, y_train, n_estimators,
                 criterion, max_depth, mf,
                 min_samples_split, min_samples_leaf, rand_state,
+                tuple(ns_range),
             )
             ns_vals   = list(oob_dict.keys())
             oob_vals  = list(oob_dict.values())

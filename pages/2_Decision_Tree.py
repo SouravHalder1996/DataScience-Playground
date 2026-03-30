@@ -211,8 +211,9 @@ with tab5:
     fig_tree.update_layout(
         **PLOTLY_LAYOUT, title=f"Tree Structure (depth={depth_actual}, leaves={n_leaves})",
         showlegend=False, height=max(400, depth_actual * 120),
-        xaxis=dict(visible=False), yaxis=dict(visible=False),
     )
+    fig_tree.update_xaxes(visible=False)
+    fig_tree.update_yaxes(visible=False)
     st.plotly_chart(fig_tree, use_container_width=True)
 
     with st.expander("🖨️ Text representation"):
